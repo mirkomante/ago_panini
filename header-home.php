@@ -6,7 +6,7 @@
         <title><?php bloginfo(); ?></title>
         <link href="<?php bloginfo( 'stylesheet_url' ); echo '?ver='.filemtime(get_stylesheet_directory().'/style.css'); ?>" rel="stylesheet">
     </head>
-    <body>
+    <body class="home min-h-screen overflow-hidden bg-black">
       <div id="nav-wrap" class="w-full h-screen absolute top-0 left-0 -z-10 flex overflow-hidden">
       
         <div class="nav-half-sx flex w-1/2 h-full justify-items-center items-center bg-white top-full transition-[top] duration-[2s] ease-in-out">
@@ -40,16 +40,16 @@
 
       <header class="flex flex-row h-[100px] z-30 items-center">
         <div class="shrink pt-3 pl-3">
-          <a href="<?php echo home_url();?>"><span id="logo" class="font-display text-5xl font-extralight text-black">AGO_PANINI</span></a>
+          <a href="<?php echo home_url();?>"><span id="logo" class="font-display text-5xl font-extralight text-white">AGO_PANINI</span></a>
         </div>
         <div class="grow">
         </div>
         <div class="shrink overflow-hidden">
           <div id="menu-toggle" class="relative cursor-pointer w-[100px] h-[100px] float-right">
             <div id="hamburger" class="absolute w-full h-full">
-              <span class="block rounded-sm relative bg-black w-[60px] h-1 top-6 left-5 my-[10px] mx-0 transition-all duration-200  ease-in-out"></span>
-              <span class="block rounded-sm relative bg-black w-[40px] h-1 top-6 left-5 my-[10px] mx-0 transition-all duration-200  ease-in-out"></span>
-              <span class="block rounded-sm relative bg-black w-[10px] h-1 top-6 left-5 my-[10px] mx-0 transition-all duration-200  ease-in-out"></span>
+              <span class="block rounded-sm relative bg-white w-[60px] h-1 top-6 left-5 my-[10px] mx-0 transition-all duration-200  ease-in-out"></span>
+              <span class="block rounded-sm relative bg-white w-[40px] h-1 top-6 left-5 my-[10px] mx-0 transition-all duration-200  ease-in-out"></span>
+              <span class="block rounded-sm relative bg-white w-[10px] h-1 top-6 left-5 my-[10px] mx-0 transition-all duration-200  ease-in-out"></span>
             </div>
             <div id="cross" class="absolute w-full h-full rotate-45">
               <span class="menu-line block rounded-sm absolute bg-black h-[0%] w-1 top-[10%] left-12 delay-0 transition-all duration-200  ease-in-out"></span>

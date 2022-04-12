@@ -57,8 +57,8 @@ if( function_exists('acf_add_options_page') ) {
 	));
 
 	acf_add_options_sub_page(array(
-		'page_title' 	=> 'Video home page',
-		'menu_title'	=> 'Video',
+		'page_title' 	=> 'Home page',
+		'menu_title'	=> 'Home',
 		'parent_slug'	=> 'sito-dati',
 	));
 	
