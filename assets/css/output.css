@@ -728,6 +728,34 @@ Ensure the default browser behavior of the `hidden` attribute.
   min-height: 100vh;
 }
 
+.min-h-\[130vh\]{
+  min-height: 130vh;
+}
+
+.min-h-\[140vh\]{
+  min-height: 140vh;
+}
+
+.min-h-\[150vh\]{
+  min-height: 150vh;
+}
+
+.min-h-\[160vh\]{
+  min-height: 160vh;
+}
+
+.min-h-\[165vh\]{
+  min-height: 165vh;
+}
+
+.min-h-\[161vh\]{
+  min-height: 161vh;
+}
+
+.min-h-\[169vh\]{
+  min-height: 169vh;
+}
+
 .w-full{
   width: 100%;
 }
@@ -774,6 +802,34 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .min-w-\[177\.77vh\]{
   min-width: 177.77vh;
+}
+
+.min-w-\[207\.77vh\]{
+  min-width: 207.77vh;
+}
+
+.min-w-\[217\.77vh\]{
+  min-width: 217.77vh;
+}
+
+.min-w-\[227\.77vh\]{
+  min-width: 227.77vh;
+}
+
+.min-w-\[237\.77vh\]{
+  min-width: 237.77vh;
+}
+
+.min-w-\[242\.77vh\]{
+  min-width: 242.77vh;
+}
+
+.min-w-\[238\.77vh\]{
+  min-width: 238.77vh;
+}
+
+.min-w-\[246\.77vh\]{
+  min-width: 246.77vh;
 }
 
 .max-w-screen-xl{
@@ -931,6 +987,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-right: 8rem;
 }
 
+.px-2{
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
 .pt-20{
   padding-top: 5rem;
 }
@@ -998,6 +1059,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   line-height: 1.75rem;
 }
 
+.text-sm{
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
 .font-normal{
   font-weight: 400;
 }
@@ -1041,6 +1107,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   color: rgb(55 65 81 / var(--tw-text-opacity));
 }
 
+.opacity-0{
+  opacity: 0;
+}
+
 .filter{
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
@@ -1053,6 +1123,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .transition-all{
   transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.transition-opacity{
+  transition-property: opacity;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
@@ -1071,6 +1147,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .duration-\[1s\]{
   transition-duration: 1s;
+}
+
+.duration-1000{
+  transition-duration: 1000ms;
 }
 
 .ease-in-out{
@@ -1259,4 +1339,20 @@ Ensure the default browser behavior of the `hidden` attribute.
 .hover\:text-green-700:hover{
   --tw-text-opacity: 1;
   color: rgb(21 128 61 / var(--tw-text-opacity));
+}
+
+@media (min-width: 1024px){
+  .lg\:w-1\/4{
+    width: 25%;
+  }
+
+  .lg\:px-32{
+    padding-left: 8rem;
+    padding-right: 8rem;
+  }
+
+  .lg\:text-2xl{
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
 }

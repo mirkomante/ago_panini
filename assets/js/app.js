@@ -1,3 +1,4 @@
+//const player = require("@vimeo/player");
 
 const   isHome        = document.body.classList.contains('home'),
         menuIcon      = document.getElementById('menu-toggle'),
@@ -10,12 +11,16 @@ const   isHome        = document.body.classList.contains('home'),
 // const isHidden = () => projects.classList.contains('remove');
 var     openMenu      = false,
         activeFilter  = '',
-        vimeoPlayer   = false;
+        vimeoPlayer   = false,
+        vimeoLoop     = false,
+        videoiFrames  = Array(),
+        videoCarousel = Array();
 
 
 console.log('start');
 
-menuIcon.addEventListener('click',()=>{
+if(menuIcon){
+  menuIcon.addEventListener('click',()=>{
     
     menuIcon.classList.toggle('open');
 
@@ -67,8 +72,10 @@ menuIcon.addEventListener('click',()=>{
         navWrap.classList.add('-z-10');
       }
     });
+  });
+}
 
-});
+
 
 filters.forEach(filter => { 
 
@@ -175,7 +182,6 @@ function Marquee(selector, speed) {
   const clone = parentSelector.innerHTML;
   const firstElement = parentSelector.children[0];
   let i = 0;
-  // console.log(firstElement);
 
   firstElement.addEventListener('click',function(){
     console.log('click');
@@ -194,4 +200,63 @@ function Marquee(selector, speed) {
 
 if (isHome) {
   window.addEventListener('load', Marquee('.marquee', 0.2));
+  window.addEventListener('load', addVimeoCarousel());
 }
+
+function addVimeoCarousel(){
+
+    videoiFrames = document.querySelectorAll('iframe');
+    videoiFrames.forEach(element => {
+
+      let vPlayer = new Vimeo.Player(element);
+          vPlayer.getDuration().then(function(duration) {
+            
+            let d = duration - 5;
+            
+            vPlayer.addCuePoint(d, {customKey: 'prepareNextVideo'});
+
+            vPlayer.on('cuepoint', function(data) {              
+              nextVideo(this,data.id);
+            });
+
+          });
+
+          videoCarousel.push(vPlayer);
+    });
+
+    function nextVideo(vid,id){
+
+      let id_actual,id_next;
+      id_actual = videoCarousel.indexOf(vid);
+      id_next   = id_actual+1;
+
+      if(id_next==videoCarousel.length){
+        id_next=0;
+        vimeoLoop=true;
+      }
+
+      videoCarousel[id_next].play();
+
+      if(vimeoLoop){
+        
+        videoiFrames[id_actual].classList.add('opacity-0');
+        videoiFrames[id_next].classList.remove('opacity-0');
+
+        vid.pause();
+        vid.setCurrentTime(0);
+
+      }else{
+        videoCarousel[id_next].on('bufferend', function(){
+  
+          videoiFrames[id_actual].classList.add('opacity-0');  
+          videoiFrames[id_next].classList.remove('opacity-0');
+  
+          vid.pause();
+          vid.setCurrentTime(0);
+        });
+      }
+      
+    }
+
+}
+

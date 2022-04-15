@@ -2,11 +2,6 @@
 
 get_header();
 
-$terms = get_terms( array( 
-    'taxonomy' => 'categorie',
-    'hide_empty' => false,
-) );
-
 $args	= array(	
 				'post_type'			=>	'video',
 				'posts_per_page'	=>	-1 
@@ -17,9 +12,12 @@ $the_query = new WP_Query( $args );
 
 <div class="grid grid-cols-6 gap-2 max-w-screen-xl py-4 px-32 my-7 items-center justify-items-center border-y-2 border-gray-100 border-solid text-center mx-auto">
 <?php 
-	foreach ($terms as $key => $value) {
-		echo ' <button class="filter font-display text-2xl font-light hover:text-green-700 text-black uppercase" data-filter="'.$value->slug.'" >'.$value->name.'</button>';
-	}
+		$rows = get_field('ordine_categorie_video', 'option');
+		if( $rows ) {
+			foreach( $rows as $row ) {
+				echo ' <button class="filter font-display text-2xl font-light hover:text-green-700 text-black uppercase" data-filter="'.$row["categoria_video"]->{'slug'}.'" >'.$row["categoria_video"]->{'name'}.'</button>';
+			}
+		}
 ?>
 </div>
 
