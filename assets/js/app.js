@@ -7,10 +7,14 @@ const   isHome        = document.body.classList.contains('home'),
         filters       = document.querySelectorAll('.filter'),
         projects      = document.querySelectorAll('.project'),
         modalWrap     = document.getElementById('modal-wrap'),
-        modal         = document.querySelector('.modal-scrim');
+        modal         = document.querySelector('.modal-scrim'),
+        getParams     = new Proxy(new URLSearchParams(window.location.search), {
+          get: (searchParams, prop) => searchParams.get(prop),
+        });
 // const isHidden = () => projects.classList.contains('remove');
 var     openMenu      = false,
-        activeFilter  = '',
+        //activeFilter  = '',
+        activeFilter  = getParams.show_reel!=null ? getParams.show_reel : '',
         vimeoPlayer   = false,
         vimeoLoop     = false,
         videoiFrames  = Array(),
@@ -24,6 +28,12 @@ var     openMenu      = false,
 
 
 console.log('start');
+
+//window.history.pushState({}, document.title, window.location.pathname);
+
+if(activeFilter){
+  filterElements(activeFilter);
+}
 
 if(menuIcon){
   menuIcon.addEventListener('click',()=>{
@@ -91,6 +101,12 @@ filters.forEach(filter => {
 
   filter.addEventListener('click', function() {
     filterElements(this.getAttribute('data-filter'));
+    
+    let new_url = new URLSearchParams(window.location.search);
+        new_url.set('show_reel',this.getAttribute('data-filter'));
+        history.pushState(null, null, "?"+new_url.toString());
+
+    
   });
 });
 
@@ -100,18 +116,18 @@ function filterElements(active){
       itemsToHide     = document.querySelectorAll(`.projects .project:not([data-filter='${selectedFilter}'])`),
       itemsToShow     = document.querySelectorAll(`.projects [data-filter*='${selectedFilter}']`);
       
-  if(activeFilter == selectedFilter) {
-    activeFilter = '';
-    itemsToHide = [];
-    itemsToShow = document.querySelectorAll('.projects [data-filter]');
-  }else{
-    activeFilter = selectedFilter;
-  }
+  // if(activeFilter == selectedFilter) {
+  //   activeFilter = '';
+  //   itemsToHide = [];
+  //   itemsToShow = document.querySelectorAll('.projects [data-filter]');
+  // }else{
+  //   activeFilter = selectedFilter;
+  // }
 
-  if (selectedFilter == 'all') {
-    itemsToHide = [];
-    itemsToShow = document.querySelectorAll('.projects [data-filter]');
-  }
+  // if (selectedFilter == 'all') {
+  //   itemsToHide = [];
+  //   itemsToShow = document.querySelectorAll('.projects [data-filter]');
+  // }
 
   itemsToHide.forEach(el => {
     el.classList.add('hide');
