@@ -1,13 +1,17 @@
 <?php get_header('home'); ?>
 <div class="absolute top-0 left-0 w-[100vw] h-[100vh] flex items-center marquee overflow-hidden">  
-    <h1 class="font-display text-black text-9xl text-center font-bold title-outline whitespace-nowrap angle">
+    <h1 class="font-display text-black text-center font-bold whitespace-nowrap flex items-center">
 <?php 
 
 		$rows = get_field('testo_scorrimento', 'option');
 
 		if( $rows ) {
 			foreach( $rows as $row ) {
-				echo '<span class="inline-block pr-[10vw] uppercase">'.$row['testo'].'</span>';
+				if($row['stile']=='author'){
+					echo '<span class="inline-block text-5xl pr-[10vw] uppercase marquee">( '.$row['testo'].' )</span>';
+				}else{
+					echo '<span class="inline-block text-9xl pr-[10vw] uppercase marquee">'.$row['testo'].'</span>';
+				}
 			}
 		}
 
